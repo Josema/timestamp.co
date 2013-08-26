@@ -1,0 +1,284 @@
+
+@font-face
+{
+		font-family: 'Helvetic';
+		src: url('../fonts/HelveticaLight.otf');
+		src: url('../fonts/HelveticaLight.eot?#iefix') format('embedded-opentype'),
+				 url('../fonts/HelveticaLight.woff') format('woff'),
+				 url('../fonts/HelveticaLight.ttf') format('truetype'),
+				 url('../fonts/HelveticaLight.otf') format('otf');
+		font-weight: normal;
+		font-style: normal;
+}
+@font-face
+{
+		font-family: 'Helvetic';
+		src: url('../fonts/HelveticaRegular.otf');
+		src: url('../fonts/HelveticaRegular.eot?#iefix') format('embedded-opentype'),
+				 url('../fonts/HelveticaRegular.woff') format('woff'),
+				 url('../fonts/HelveticaRegular.ttf') format('truetype'),
+				 url('../fonts/HelveticaRegular.otf') format('otf');
+		font-weight: bold;
+		font-style: normal;
+}
+@font-face
+{
+		font-family: 'HelveticaBold';
+		src: url('../fonts/HelveticaBold.otf');
+		src: url('../fonts/HelveticaBold.eot?#iefix') format('embedded-opentype'),
+				 url('../fonts/HelveticaBold.woff') format('woff'),
+				 url('../fonts/HelveticaBold.ttf') format('truetype'),
+				 url('../fonts/HelveticaBold.otf') format('otf');
+		font-weight: normal;
+		font-style: normal;
+}
+
+
+body {
+	margin: 85px 0 0;
+	font-family: "Helvetic", Helvetica, Arial;
+	color:#444
+}
+img, select {
+	border:0
+}
+*:focus {
+	outline: none
+}
+
+
+#logo {
+  position: fixed;
+  top: 0;
+  z-index: 1;
+}
+
+#header {
+  background: url("../img/backgroundheader.gif") repeat-x scroll 0 0 transparent;
+  box-shadow: 0 0 3px;
+  color: #BFBFBF;
+  display: table;
+  font-size: 14px;
+  height: 40px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+#header > div {
+	display:table-row
+}
+#header > div > div {
+	display:table-cell;
+	vertical-align: top
+}
+#header #gmt {
+	width: 195px;
+}
+
+
+#header #updated, #header #gmt {
+	padding-top: 12px;
+}
+#header #updated {
+  padding-left: 195px;
+}
+#header #updated > div {
+  height: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 625px;
+}
+#header #updated > div > div {
+  float: left;
+  margin-right: 25px
+}
+#header #updated > div > div:last-child {
+	margin:0
+}
+#header #gmt > div {
+  float: left;
+  margin-left: 10px;
+}
+#header #gmt > div:last-child {
+	float: right;
+	margin-right: 20px;
+}
+#header span {
+  font-family:HelveticaBold;
+  color:#508399;
+}
+#header select {
+	font-family: "Helvetic";
+	font-size: 12px;
+	color: #666;
+}
+
+
+#content {
+  margin-left: auto;
+  margin-right: auto;
+  width: 1000px;
+}
+
+
+
+
+input:focus {
+  border-color: #A4E900 !important;
+  box-shadow: 0 0 5px #A4E900;
+}
+input {
+  border: 5px solid #68C3FF;
+  border-radius: 8px;
+  font-family: HelveticaBold;
+  font-size: 20px;
+  padding-left: 2px;
+  padding-right: 2px;
+  text-align: center;
+  color: #444;
+}
+input.timestamp {
+  border: 10px solid #68c3ff;
+  border-radius: 15px;
+  font-size: 70px;
+  letter-spacing: -3px;
+  padding-right: 10px;
+  text-align: right;
+  width: 369px;
+}
+label {
+  font-size: 12px;
+}
+
+
+
+.block {
+  width: 400px;
+}
+.blocktop {
+  height: 26px;
+  margin-bottom: 4px;
+}
+.blocktop label {
+  padding-top: 10px;
+  font-size: 13px;
+}
+.iconswrap > div {
+  margin-right: 5px;
+  float: right;
+}
+.iconswrap .alt {
+  color: #AAAAAA;
+  font-family: Arial;
+  font-size: 10px;
+  margin-right: 10px;
+  padding-top: 13px;
+}
+.iconswrap a {
+  background-repeat: no-repeat;
+  display: block;
+  height: 26px;
+  width: 25px;
+  text-decoration:none;
+}
+.iconswrap a.update {
+  background-image: url("../img/update.png");
+}
+.iconswrap a.update:hover {
+  background-image: url("../img/update_hover.png");
+}
+.iconswrap a.pick {
+  background-image: url("../img/pick.png");
+}
+.iconswrap a.pick:hover {
+  background-image: url("../img/pick_hover.png");
+}
+.iconswrap a.copy {
+  background-image: url("../img/copy.png");
+}
+.iconswrap a.copy:hover {
+  background-image: url("../img/copy_hover.png");
+}
+
+
+
+
+.blockbottom {
+  margin-top: 10px;
+}
+.blockbottom > * {
+  float: left;
+  margin-right: 4px;
+}
+.blockbottom > *:last-child {
+  margin-right: 0;
+}
+
+.blockbottom input[maxlength="4"] {
+  width: 46px;
+}
+.blockbottom input[maxlength="3"] {
+  width: 36px;
+}
+.blockbottom input[maxlength="2"] {
+  width: 26px;
+}
+.blockbottom > span {
+  display: block;
+  float: left;
+  font-family: HelveticaBold;
+  font-size: 30px;
+  padding-top: 15px;
+}
+
+.blockbottom div.time {
+  margin-right: 0;
+}
+
+.blockbottom span.separatormid {
+  width: 20px;
+  margin-right: 0;
+}
+.blockbottom span.dots {
+  margin-right: 0;
+  width: 11px;
+}
+
+
+
+.info {
+  clear: both;
+  font-size: 11px;
+  padding-top: 10px;
+}
+.info > div {
+  border-top: 1px solid #EFEFEF;
+  height: 30px;
+}
+.info > div:last-child {
+  border-bottom: 1px solid #EFEFEF;
+}
+.info > div > div {
+  float: left;
+  width: 130px;
+}
+.info > div > div:first-child {
+  width: 165px;
+}
+.info > div > div:last-child {
+  width: 100px;
+}
+.info > div > div > div {
+  float: left;
+  height: 28px;
+  line-height: 28px;
+  margin-top: 1px;
+  padding-right: 2px;
+}
+.info .title {
+  color: #A2A2A2;
+}
+.info .value {
+  color: #508399;
+  font-family: HelveticaBold
+}
