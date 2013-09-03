@@ -1,4 +1,3 @@
-
 @font-face
 {
 		font-family: 'Helvetic';
@@ -45,7 +44,10 @@ img, select {
 *:focus {
 	outline: none
 }
-
+body:after {
+	display: none;
+	background:url('../img/update_hover.png'), url('../img/pick_hover.png'), url('../img/copy_hover.png')
+}
 
 #logo {
   position: fixed;
