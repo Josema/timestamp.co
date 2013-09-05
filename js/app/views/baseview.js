@@ -20,7 +20,6 @@ define([
 			//e.target.value = $.trim(e.target.value);
 			if ((/^\s*\d*\s*$/.test(e.target.value)))
 			{
-				console.log(this.lastPosition, e.target.selectionStart, e.target.selectionEnd)
 				this.trimedInput = $.trim(e.target.value);
 				if (this.trimedInput != e.target.value)
 					e.target.value = this.trimedInput;
