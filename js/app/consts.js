@@ -3,10 +3,10 @@
 
 define([], function () {
 	return {
-		// Which filter are we using?
-		TodoFilter: '', // empty, active, completed
+
+		//EVENTS
+		ON_INTERVAL: 'onInterval',
 		
-		// What is the enter key constant?
-		ENTER_KEY: 13
+		TIMEINTERVAL: 10
 	};
 });

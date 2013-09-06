@@ -11,7 +11,7 @@
 		<link rel="stylesheet" href="css/alias.css" type="text/css"/>
 		<link rel="stylesheet" href="css/layout.css" type="text/css"/>
 
-		<script data-main="js/config" src="js/lib/require-min.js"></script>
+		<script data-main="js/config" src="js/lib/require.min.js"></script>
 	</head>
 	<body>
 		<div id="logo"><a href="#"><img src="img/logo.png" width="195" height="91" alt="Logo" /></a></div>
@@ -19,12 +19,12 @@
 			<div>
 				<div id="updated">
 					<div>
-						<div>timestamp <span>123451213</span></div>
-						<div>year <span>2013</span></div>
-						<div>month <span>9</span></div>
-						<div>day <span>20</span></div>
-						<div>time <span>20</span><span>:</span><span>56</span></div>
-						<div>seconds <span>15</span><span>.</span><span>324</span></div>
+						<div>timestamp <span id="htimestamp">123451213</span></div>
+						<div>year <span id="hyear">2013</span></div>
+						<div>month <span id="hmonth">9</span></div>
+						<div>day <span id="hday">20</span></div>
+						<div>time <span id="hhour">20</span><span>:</span><span id="hmin">56</span></div>
+						<div>seconds <span id="hsec">15</span><span>.</span><span id="hmili">324</span></div>
 					</div>
 				</div>
 				<div id="gmt">

@@ -5,9 +5,13 @@ define([
 	'backbone',
 	'underscore',
 	'jquery',
+	'app/models/timestamp',
+	'app/views/header',
 	'app/views/block'
-], function (Backbone, _, $, Block) {
-	
-	var Start = new Block(0);
+], function (Backbone, _, $, Timestamp, Header, Block) {
+
+	var timestamp = new Timestamp();
+	var header = new Header({model: timestamp});
+	var start = new Block(0);
 
 });

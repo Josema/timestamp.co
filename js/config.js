@@ -5,8 +5,8 @@ require.config({
 
 	'paths':
 	{
-		"underscore": "lib/underscore-min", 
-		"backbone": "lib/backbone-min",
+		"underscore": "lib/underscore.min", 
+		"backbone": "lib/backbone.min",
 		"text": "lib/text.min",
 		"jquery": "lib/jquery.min"
 	},
