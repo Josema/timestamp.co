@@ -3,8 +3,9 @@
 
 define([
 	'backbone',
+	'underscore',
 	'jquery'
-], function (Backbone, $) {
+], function (Backbone, _, $) {
 
 
 	var BaseView = Backbone.View.extend({
@@ -13,7 +14,8 @@ define([
 		
 	   	events: {
 			'keypress input': 'updateInput',
-			'keyup input': 'updateInput'
+			'keyup input': 'updateInput',
+			'drop input': 'updateInputDrop'
 		},
 
 		updateInput : function(e) {
@@ -36,6 +38,15 @@ define([
 			}
 			
 		},
+		
+		updateInputDrop : function(e) {
+			this.lastInput = e.target.value;
+			this.lastPosition = [e.target.selectionStart, e.target.selectionEnd];
+			setTimeout(function() { 
+				this.updateInput(e);
+			}.bind(this), 0);
+		},
+		
 		
 		lastInput: null,
 		lastPosition: [0,0],

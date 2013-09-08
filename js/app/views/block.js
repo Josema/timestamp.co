@@ -13,11 +13,12 @@ define([
 		
 		containersId: ["#start", "#end"],
 		
-		initialize: function (id) {
+		initialize: function (model, id) {
+			this.model = model;
 			this.id = id;
-	        this.el = $(this.containersId[this.id]);
-	        this.render();
-	    },
+			this.el = $(this.containersId[this.id]);
+			this.render();
+		},
 
 		render: function () {
 			var template = _.template(htmltimestamp);

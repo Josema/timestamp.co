@@ -88,7 +88,17 @@ body:after {
   height: 10px;
   margin-left: auto;
   margin-right: auto;
-  width: 625px;
+  width: 640px;
+}
+#header #updated #clock {
+  margin-right: 15px;
+  width: 17px;
+  height: 18px;
+  overflow: hidden;
+  background: url('../img/clock.png') no-repeat center center;
+}
+#header #updated #clock.over {
+  background-image: url('../img/denied.png');
 }
 #header #updated > div > div {
   float: left;

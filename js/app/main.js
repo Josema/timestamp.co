@@ -2,16 +2,13 @@
 'use strict';
 
 define([
-	'backbone',
-	'underscore',
-	'jquery',
 	'app/models/timestamp',
 	'app/views/header',
 	'app/views/block'
-], function (Backbone, _, $, Timestamp, Header, Block) {
+], function (Timestamp, Header, Block) {
 
 	var timestamp = new Timestamp();
-	var header = new Header({model: timestamp});
-	var start = new Block(0);
+	var header = new Header(timestamp);
+	var start = new Block(timestamp, 0);
 
 });

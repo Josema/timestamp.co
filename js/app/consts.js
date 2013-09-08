@@ -5,8 +5,9 @@ define([], function () {
 	return {
 
 		//EVENTS
-		ON_INTERVAL: 'onInterval',
-		
-		TIMEINTERVAL: 10
+		ON_UPDATE: 'onupdate',
+
+		TIMEINTERVAL: 51
+
 	};
 });
