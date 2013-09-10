@@ -14,14 +14,14 @@ define([
 		
 		canupdate: true,
 
-	   	events: {
+		events: {
 			'mouseover #updated': 'onMouseheader',
 			'mouseout #updated': 'onMouseheader'
 		},
 
 		initialize: function (model) {
 			this.model = model;
-			this.model.on(Consts.ON_UPDATE, _.bind(this.update, this));
+			this.model.on(Consts.ON_CURRENT, _.bind(this.update, this));
 
 			this.timestamp = $('#htimestamp');
 			this.year = $('#hyear');
@@ -49,8 +49,8 @@ define([
 		
 		onMouseheader: function (e) {
 			this.canupdate = (e.type == 'mouseout');
-			(this.canupdate) ? $('#clock').removeClass('over') : $('#clock').addClass('over');
-		},
+			(this.canupdate) ? $('#header').removeClass('over') : $('#header').addClass('over');
+		}
 	});
 	
 	return Header;

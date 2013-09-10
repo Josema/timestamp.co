@@ -12,16 +12,16 @@ define([
 		current: {},
 
 		constructor: function () {
-			this.update();
+			this.onInterval();
 			this.interval = setInterval(
-				_.bind(this.update, this), //this.onInterval.bind(this) Native option Doesn't work on IE8-7
+				_.bind(this.onInterval, this), //this.onInterval.bind(this) Native option Doesn't work on IE8-7
 				Consts.TIMEINTERVAL
 			);
 		},
 
-		update: function () {
+		onInterval: function () {
 			this.current = this.get(new Date());
-			this.trigger(Consts.ON_UPDATE);
+			this.trigger(Consts.ON_CURRENT);
 		},
 		
 		get: function (date) {

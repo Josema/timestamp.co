@@ -46,7 +46,11 @@ img, select {
 }
 body:after {
 	display: none;
-	background:url('../img/update_hover.png'), url('../img/pick_hover.png'), url('../img/copy_hover.png')
+	background:
+		url('../img/update_hover.png'),
+		url('../img/pick_hover.png'),
+		url('../img/copy_hover.png'),
+		url('../img/denied.png');
 }
 
 #logo {
@@ -65,6 +69,7 @@ body:after {
   position: fixed;
   top: 0;
   width: 100%;
+  cursor: default;
 }
 #header > div {
 	display:table-row
@@ -95,9 +100,9 @@ body:after {
   width: 17px;
   height: 18px;
   overflow: hidden;
-  background: url('../img/clock.png') no-repeat center center;
+  background: url('../img/clock.gif') no-repeat center center;
 }
-#header #updated #clock.over {
+#header.over #updated #clock {
   background-image: url('../img/denied.png');
 }
 #header #updated > div > div {
@@ -118,6 +123,10 @@ body:after {
 #header span {
   font-family:HelveticaBold;
   color:#508399;
+}
+#header.over span {
+  color:#DD2200;
+  cursor:text
 }
 #header select {
 	font-family: "Helvetic";
@@ -140,7 +149,7 @@ input:focus {
   box-shadow: 0 0 5px #A4E900;
 }
 input {
-  border: 5px solid #68C3FF;
+  border: 5px solid #00c4ff;
   border-radius: 8px;
   font-family: HelveticaBold;
   font-size: 20px;
@@ -150,7 +159,7 @@ input {
   color: #444;
 }
 input.timestamp {
-  border: 10px solid #68c3ff;
+  border-width:10px;
   border-radius: 15px;
   font-size: 70px;
   letter-spacing: -3px;
@@ -240,7 +249,7 @@ label {
   float: left;
   font-family: HelveticaBold;
   font-size: 30px;
-  padding-top: 15px;
+  padding-top: 19px;
 }
 
 .blockbottom div.time {

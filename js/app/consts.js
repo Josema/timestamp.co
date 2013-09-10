@@ -5,7 +5,7 @@ define([], function () {
 	return {
 
 		//EVENTS
-		ON_UPDATE: 'onupdate',
+		ON_CURRENT: 'onCurrent',
 
 		TIMEINTERVAL: 51
 
