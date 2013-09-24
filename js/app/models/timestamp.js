@@ -66,7 +66,7 @@ define([
 
 		onTimeserverSuccess: function (model)
 		{
-        	var servertime = new Date(model.get("timeserver").year, model.get("timeserver").month-1, model.get("timeserver").day, model.get("timeserver").hour).getTime();
+			var servertime = new Date(model.get("timeserver").year, model.get("timeserver").month-1, model.get("timeserver").day, model.get("timeserver").hour).getTime();
 			if (!isNaN(servertime))
 			{
 				var t = model.get("current");

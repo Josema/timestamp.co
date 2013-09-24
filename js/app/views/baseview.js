@@ -42,9 +42,9 @@ define([
 		updateInputDrop : function(e) {
 			this.lastInput = e.target.value;
 			this.lastPosition = [e.target.selectionStart, e.target.selectionEnd];
-			setTimeout(function() { 
+			setTimeout(_.bind(function() { 
 				this.updateInput(e);
-			}.bind(this), 0);
+			}, this), 0);
 		},
 		
 		

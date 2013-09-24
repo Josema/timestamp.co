@@ -1,4 +1,4 @@
-				<div class="blocktop">
+				<div class="rowtop">
 					<label class="fl">Timestamp</label>
 					<div class="iconswrap fr">
 						<div><a href="#" class="update">&nbsp;</a></div>
@@ -8,7 +8,7 @@
 					</div>
 				</div>
 				<input type="text" value="1223124123" class="timestamp" id="timestamp1" />
-				<div class="blockbottom">
+				<div class="row">
 					<div>
 						<label>Year</label>
 						<div><input id="year1" type="text" maxlength="4" value="2014" /></div>
@@ -46,33 +46,24 @@
 						<div><input id="mili1" type="text" maxlength="3" value="454" /></div>
 					</div>
 				</div>
-				<div class="info">
+				<div class="row mini">
 					<div>
-						<div>
-							<div class="title">weekday</div>
-							<div class="value">Wenesday (1)</div>
-						</div>
-						<div>
-							<div class="title">month</div>
-							<div class="value">January</div>
-						</div>
-						<div>
-							<div class="title">week of the year</div>
-							<div class="value">21</div>
-						</div>
+						<label>Weekday <input id="weekday1" class="mini" type="text" maxlength="1" value="7" /></label>
 					</div>
 					<div>
-						<div>
-							<div class="title">total months</div>
-							<div class="value">12</div>
-						</div>
-						<div>
-							<div class="title">total weeks</div>
-							<div class="value">41</div>
-						</div>
-						<div>
-							<div class="title">total days</div>
-							<div class="value">122</div>
-						</div>
+						<label>Week of the year <input id="weekyear1" class="mini" type="text" maxlength="2" value="44" /></label>
+					</div>
+					<div class="last">
+						<label>Day of the year <input id="dayyear1" class="mini" type="text" maxlength="3" value="365" /></label>
+					</div>
+				</div>
+				<div class="row formated">
+					<div>
+						<label><span>Monday 8th of August 2005 03:12:46 PM</span></label>
+					</div>
+				</div>
+				<div class="row">
+					<div>
+						<div><input id="format1" type="text" value="l jS \of F Y h:i:s A" /></div>
 					</div>
 				</div>
