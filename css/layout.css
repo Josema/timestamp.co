@@ -81,6 +81,12 @@ body:after {
 #header #gmt {
 	width: 195px;
 }
+#header #gmt option.gmtreal {
+	background-color: #DDDDDD;
+	color: #508399;
+	font-size: 12px;
+	font-weight: bold;
+}
 
 
 #header #updated, #header #gmt {

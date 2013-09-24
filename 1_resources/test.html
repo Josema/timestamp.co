@@ -1,0 +1,81 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+		<title>HTML</title>
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="http://documentcloud.github.com/underscore/underscore-min.js"></script>
+
+<script type="text/javascript" src="https://raw.github.com/jashkenas/backbone/master/backbone.js"></script>
+
+
+<script>
+	
+$(document).ready(function() {
+    
+
+
+	var Timer = Backbone.Model.extend({
+    	urlRoot : 'timeserver/',
+    	defaults: {
+            name: '',
+            email: ''
+        }
+    });
+	var timer = new Timer({id:1});
+	timer.fetch({
+    	success: function(data) {
+			alert('success')
+       },
+       fail: function(model, response) {
+           alert('fail');
+       },
+       sync: function(data) {
+			alert('sync')
+       }
+    });
+    //setTimeout(function(){alert(mybook.name)},1000)
+
+
+
+var Timestamp = Backbone.Model.extend({
+	
+
+		initialize: function () {
+			//console.log(this.get("current"))
+		},
+});
+a = new Timestamp({name: 'Stewie'});
+console.log(a.get("name"))
+
+
+Person = Backbone.Model.extend({
+	
+	current: 123,
+        initialize: function(){
+            /*this.on("change:name", function(model){
+                var name = model.get("name"); // 'Stewie Griffin'
+                alert("Changed my name to " + name );
+            });*/
+        }
+    });
+    
+    var person = new Person({ name: "Thomas"});
+
+person.set({name: 'Griffin'});
+console.log(person.get("name"))
+
+});
+</script>
+
+	</head>
+
+	<body>
+
+	</body>
+</html>

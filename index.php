@@ -1,0 +1,69 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+		<title>THE TIMESTAMP</title>
+
+		<link rel="shortcut icon" href="/favicon.ico" />
+		
+		<link rel="stylesheet" href="css/alias.css" type="text/css"/>
+		<link rel="stylesheet" href="css/layout.css" type="text/css"/>
+
+		<script data-main="js/config" src="js/lib/require.min.js"></script>
+	</head>
+	<body>
+		<div id="logo"><a href="#"><img src="img/logo.png" width="195" height="91" alt="Logo" /></a></div>
+		<div id="header">
+			<div>
+				<div id="updated">
+					<div>
+						<div id="clock">&nbsp;</div>
+						<div>timestamp <span id="htimestamp">&nbsp;</span> </div>
+						<div>year <span id="hyear">&nbsp;</span></div>
+						<div>month <span id="hmonth">&nbsp;</span></div>
+						<div>day <span id="hday">&nbsp;</span></div>
+						<div>time <span id="hhour">&nbsp;</span><span>:</span><span id="hmin">&nbsp;</span></div>
+						<div>seconds <span id="hsec">&nbsp;</span><span>.</span><span id="hmili">&nbsp;</span></div>
+					</div>
+				</div>
+				<div id="gmt">
+					<div>
+						<select id="gmts">
+							<option id="gmt-1" value="-12">GMT -12</option>
+							<option id="gmt-1" value="-11">GMT -11</option>
+							<option id="gmt-1" value="-10">GMT -10</option>
+							<option id="gmt-1" value="-9">GMT -9</option>
+							<option id="gmt-1" value="-8">GMT -8</option>
+							<option id="gmt-1" value="-7">GMT -7</option>
+							<option id="gmt-1" value="-6">GMT -6</option>
+							<option id="gmt-1" value="-5">GMT -5</option>
+							<option id="gmt-1" value="-4">GMT -4</option>
+							<option id="gmt-1" value="-3">GMT -3</option>
+							<option id="gmt-1" value="-2">GMT -2</option>
+							<option id="gmt-1" value="-1">GMT -1</option>
+							<option id="gmt0" value="0">GMT 0</option>
+							<option id="gmt1" value="1">GMT +1</option>
+							<option id="gmt2" value="2">GMT +2</option>
+							<option id="gmt3" value="3">GMT +3</option>
+							<option id="gmt4" value="4">GMT +4</option>
+							<option id="gmt5" value="5">GMT +5</option>
+							<option id="gmt6" value="6">GMT +6</option>
+							<option id="gmt7" value="7">GMT +7</option>
+							<option id="gmt8" value="8">GMT +8</option>
+							<option id="gmt9" value="9">GMT +9</option>
+							<option id="gmt10" value="10">GMT +10</option>
+							<option id="gmt11" value="11">GMT +11</option>
+							<option id="gmt12" value="12">GMT +12</option>
+						</select>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="content">
+			<div id="start" class="block">
+			</div>
+		</div>
+	</body>
+</html>

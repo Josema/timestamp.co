@@ -16,12 +16,15 @@ define([
 
 		events: {
 			'mouseover #updated': 'onMouseheader',
-			'mouseout #updated': 'onMouseheader'
+			'mouseout #updated': 'onMouseheader',
+			'change #gmts': 'onChangeGMT'
 		},
 
-		initialize: function (model) {
+		initialize: function (model) 
+		{
 			this.model = model;
-			this.model.on(Consts.ON_CURRENT, _.bind(this.update, this));
+			this.model.on('change:current', _.bind(this.update, this));
+			this.model.on('change:gmtreal', _.bind(this.onTimeserverSuccess, this));
 
 			this.timestamp = $('#htimestamp');
 			this.year = $('#hyear');
@@ -31,25 +34,42 @@ define([
 			this.min = $('#hmin');
 			this.sec = $('#hsec');
 			this.mili = $('#hmili');
+			this.gmt = $('#gmts');
+			
+			this.gmt.val(0);
 		},
 		
-		update: function () {
+		update: function ()
+		{
 			if (this.canupdate)
 			{
-				this.timestamp.html(this.model.current.timestamp);
-				this.year.html(this.model.current.year);
-				this.month.html(this.model.current.month);
-				this.day.html(this.model.current.day);
-				this.hour.html(this.model.current.hour);
-				this.min.html(this.model.current.min);
-				this.sec.html(this.model.current.sec);
-				this.mili.html(this.model.current.mili);
+				var current = this.model.get("current");
+				this.timestamp.html(current.timestamp);
+				this.year.html(current.year);
+				this.month.html(current.month);
+				this.day.html(current.day);
+				this.hour.html(current.hour);
+				this.min.html(current.min);
+				this.sec.html(current.sec);
+				this.mili.html(current.mili);
 			}
 		},
 		
-		onMouseheader: function (e) {
+		onMouseheader: function (e)
+		{
 			this.canupdate = (e.type == 'mouseout');
 			(this.canupdate) ? $('#header').removeClass('over') : $('#header').addClass('over');
+		},
+		
+		onChangeGMT: function (e)
+		{
+			this.model.set("gmt", Number(e.target.value));
+		},
+		
+		onTimeserverSuccess: function (e)
+		{
+			this.gmt.val(this.model.get("gmt"));
+			$('#gmt' + this.model.get("gmt")).addClass('gmtreal');
 		}
 	});
 	

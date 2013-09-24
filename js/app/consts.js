@@ -5,9 +5,11 @@ define([], function () {
 	return {
 
 		//EVENTS
-		ON_CURRENT: 'onCurrent',
+		ON_TIMESERVER_SUCCESS: 'ONTIMESERVERSUCCESS',
 
-		TIMEINTERVAL: 51
+		TIMEINTERVAL: 51,
+		
+		MINS_HOUR: 3600000
 
 	};
 });
