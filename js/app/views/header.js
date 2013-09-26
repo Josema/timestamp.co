@@ -5,7 +5,8 @@ define([
 	'backbone',
 	'underscore',
 	'jquery',
-	'app/consts'
+	'app/consts',
+	'prototype/string'
 ], function (Backbone, _, $, Consts) {
 	
 	var Header = Backbone.View.extend({
@@ -48,8 +49,8 @@ define([
 				this.year.html(current.year);
 				this.month.html(current.month);
 				this.day.html(current.day);
-				this.hour.html(current.hour);
-				this.min.html(current.min);
+				this.hour.html(current.hour.pad(2));
+				this.min.html(current.min.pad(2));
 				this.sec.html(current.sec);
 				this.mili.html(current.mili);
 			}

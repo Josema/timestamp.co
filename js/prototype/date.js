@@ -7,21 +7,21 @@ Date.prototype.setDay = function(d)
 	var sum = (d-this.getDay())*this.miliday;
 	if (sum != 0)
 		this.setTime( this.getTime()+sum );
-}
+};
 
 
 // Get the day of the year. 1-366
 Date.prototype.getDayYear = function()
 {
 	return Math.floor((this - new Date(this.getFullYear(), 0, 0)) / this.miliday);
-}
+};
 
 
 // Set the day of the year. 1-366
 Date.prototype.setDayYear = function(d)
 {
 	this.setTime(new Date(this.getFullYear(), 0, d, this.getHours(), this.getMinutes(), this.getSeconds(), this.getMilliseconds()));
-}
+};
 
 
 // Get the week of the year. 1-52
@@ -33,7 +33,7 @@ Date.prototype.getWeekYear = function ()
     d.setDate(d.getDate() + 4 - (d.getDay()||7));
     var yearStart = new Date(d.getFullYear(), 0, 1);
     return Math.ceil(( ( (d - yearStart) / this.miliday) + 1)/7);
-}
+};
 
 
 // Set the week of the year. 1-52
@@ -42,7 +42,7 @@ Date.prototype.setWeekYear = function (w)
 	var weekday = this.getDay();
 	this.setDayYear(1 + (w - 1) * 7);
 	this.setDay(weekday);
-}
+};
 
 
 Date.prototype.format = function(format)
@@ -263,4 +263,4 @@ Date.prototype.format = function(format)
     return format.replace(formatChr, formatChrCb);
   };
   return this.date(format, timestamp);
-}
+};

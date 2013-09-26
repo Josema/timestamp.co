@@ -15,31 +15,48 @@ define([
 	   	events: {
 			'keypress input': 'updateInput',
 			'keyup input': 'updateInput',
+			'keydown input': 'updateInputKeyDown',
 			'drop input': 'updateInputDrop'
 		},
 
-		updateInput : function(e) {
-			//e.target.value = $.trim(e.target.value);
-			if ((/^\s*\d*\s*$/.test(e.target.value)))
+		updateInput : function(e)
+		{
+			if (e.target.alt != 'text')
 			{
-				this.trimedInput = $.trim(e.target.value);
-				if (this.trimedInput != e.target.value)
-					e.target.value = this.trimedInput;
-				this.lastInput = this.trimedInput;
-				this.lastPosition = [e.target.selectionStart, e.target.selectionEnd];
-				return true;
-			}
-			else
-			{
-				e.target.value = this.lastInput;
-				e.target.selectionStart = this.lastPosition[0];
-				e.target.selectionEnd = this.lastPosition[1];
-				return false;
+				if ((/^\s*\d*\s*$/.test(e.target.value)))
+				{
+					this.trimedInput = $.trim(e.target.value);
+					if (this.trimedInput != e.target.value)
+						e.target.value = this.trimedInput;
+					this.lastInput = this.trimedInput;
+					this.lastPosition = [e.target.selectionStart, e.target.selectionEnd];
+					return true;
+				}
+				else
+				{
+					e.target.value = this.lastInput;
+					e.target.selectionStart = this.lastPosition[0];
+					e.target.selectionEnd = this.lastPosition[1];
+					return false;
+				}
 			}
 			
 		},
 		
-		updateInputDrop : function(e) {
+		updateInputKeyDown: function(e)
+		{
+			if (!isNaN(e.target.value))
+			{
+				var key = window.event ? e.keyCode : e.which;
+		        if (key == 38)
+		            e.target.value = (Number(e.target.value)+1);
+		        else if (key == 40)
+		            e.target.value = (Number(e.target.value)-1);
+			}
+		},
+		
+		updateInputDrop : function(e)
+		{
 			this.lastInput = e.target.value;
 			this.lastPosition = [e.target.selectionStart, e.target.selectionEnd];
 			setTimeout(_.bind(function() { 

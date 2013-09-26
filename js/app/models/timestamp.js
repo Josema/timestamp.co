@@ -5,7 +5,7 @@ define([
 	'backbone',
 	'underscore',
 	'app/consts',
-	'Date'
+	'prototype/date'
 ], function (Backbone, _, Consts) {
 	
 	var Timestamp = Backbone.Model.extend({
