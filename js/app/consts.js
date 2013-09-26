@@ -5,10 +5,11 @@ define([], function () {
 	return {
 
 		//EVENTS
-		ON_TIMESERVER_SUCCESS: 'ONTIMESERVERSUCCESS',
+		ON_CHANGE_CURRENT: 'onchangecurrent',
+		ON_TIMESERVER_SUCCESS: 'ontimeserversuccess',
 
+		//GENERAL
 		TIMEINTERVAL: 51,
-		
 		MINS_HOUR: 3600000
 
 	};

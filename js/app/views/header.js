@@ -23,7 +23,7 @@ define([
 		initialize: function (model) 
 		{
 			this.model = model;
-			this.model.on('change:current', _.bind(this.update, this));
+			this.model.on(Consts.ON_CHANGE_CURRENT, _.bind(this.update, this));
 			this.model.on('change:gmtreal', _.bind(this.onTimeserverSuccess, this));
 
 			this.timestamp = $('#htimestamp');

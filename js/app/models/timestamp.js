@@ -4,7 +4,8 @@
 define([
 	'backbone',
 	'underscore',
-	'app/consts'
+	'app/consts',
+	'Date'
 ], function (Backbone, _, Consts) {
 	
 	var Timestamp = Backbone.Model.extend({
@@ -15,9 +16,9 @@ define([
 			gmtreal: null,
 			gmt: null,
 			offset: 0,
-			current: {},
-			start: {},
-			end: {}
+			current: new Date(),
+			start: new Date(),
+			end: new Date()
 		},
 
 
@@ -34,47 +35,48 @@ define([
 		},
 
 
-		getData: function (date)
-		{
-			date = (typeof date == "number") ? new Date(date+this.get("offset")) : date;
-			return {
-				obj: date,
-				militimestamp: date.getTime()-this.get("offset"),
-				timestamp: Math.round((date.getTime()-this.get("offset"))/1000),
-				year: date.getFullYear(),
-				month: date.getMonth(),
-				weekday: date.getDay(),
-				day: date.getDate(),
-				hour: date.getHours(),
-				min: date.getMinutes(),
-				sec: date.getSeconds(),
-				mili: date.getMilliseconds()
-			};
-		},
-
 		updateCurrent: function ()
 		{
-			this.set("current", this.getData(new Date().getTime()));
+			this.get('current').setTime(new Date());
+			this.updateDate(this.get('current'));
+			this.trigger(Consts.ON_CHANGE_CURRENT);
 		},
 
 
 		updateOffset: function ()
 		{
-			this.set("offset", (this.get("gmt")-this.get("gmtreal"))*Consts.MINS_HOUR);
+			this.set('offset', (this.get('gmt')-this.get('gmtreal'))*Consts.MINS_HOUR);
 		},
 
 
 		onTimeserverSuccess: function (model)
 		{
-			var servertime = new Date(model.get("timeserver").year, model.get("timeserver").month-1, model.get("timeserver").day, model.get("timeserver").hour).getTime();
+			var servertime = new Date(model.get('timeserver').year, model.get('timeserver').month-1, model.get('timeserver').day, model.get('timeserver').hour).getTime();
 			if (!isNaN(servertime))
 			{
-				var t = model.get("current");
+				var t = model.get('current');
 				var currenttime = new Date(t.year, t.month, t.day, t.hour).getTime();
 				var calc = ((currenttime-servertime)/Consts.MINS_HOUR);
 				model.set({gmtreal: calc, gmt: calc});
 			}
-    	}
+    	},
+    	
+
+		updateDate: function (date)
+		{
+			var temp = new Date(date.getTime()+this.get('offset'));
+			date.militimestamp = temp.getTime()-this.get('offset');
+			date.timestamp = Math.round((temp.getTime()-this.get('offset'))/1000);
+			date.year = temp.getFullYear();
+			date.month = temp.getMonth();
+			date.weekday = temp.getDay(),
+			date.day = temp.getDate();
+			date.hour = temp.getHours();
+			date.min = temp.getMinutes();
+			date.sec = temp.getSeconds();
+			date.mili = temp.getMilliseconds();
+			date.dayyear = temp.getDayYear();
+		}
 	});
 	
 	return Timestamp;
