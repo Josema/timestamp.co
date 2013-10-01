@@ -1,6 +1,13 @@
 Date.prototype.miliday = 864e5;
 
 
+
+Date.prototype.setTimestamp = function(d)
+{
+	this.setTime( Number(String(d) + this.getMilliseconds()) );
+};
+
+
 // Set the day of the week 1: Monday, 7: Sunday
 Date.prototype.setDay = function(d)
 {
