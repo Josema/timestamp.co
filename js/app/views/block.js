@@ -13,18 +13,25 @@ define([
 		
 		containersId: ["#start", "#end"],
 		
-		initialize: function (model, id) {
+		initialize: function (model, id)
+		{
 			this.model = model;
 			this.id = id;
 			this.el = $(this.containersId[this.id]);
 			this.render();
 		},
 
-		render: function () {
+		render: function ()
+		{
 			var template = _.template(htmltimestamp);
 			this.el.html(template({
 				id: this.id
 			}));
+		},
+
+		updateInput: function (element)
+		{
+			console.log(element)
 		}
 	});
 	

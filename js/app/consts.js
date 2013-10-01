@@ -6,6 +6,7 @@ define([], function () {
 
 		//EVENTS
 		ON_CHANGE_CURRENT: 'onchangecurrent',
+		ON_CHANGE_INPUT: 'onchangeinput',
 		ON_TIMESERVER_SUCCESS: 'ontimeserversuccess',
 
 		//GENERAL
