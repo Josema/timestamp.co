@@ -1,18 +1,18 @@
 Date.prototype.miliday = 864e5;
 
 
+
 // Set the timestamp without millisecons
 Date.prototype.setTimestamp = function(t)
 {
   this.setTime( Number(String(t) + this.getMilliseconds()) );
-  console.log(this)
 };
 
 
 // Set the day of the week 1: Monday, 7: Sunday
 Date.prototype.setDay = function(d)
 {
-  var sum = (d-this.getDay())*this.miliday;
+	var sum = (d-this.getDay())*this.miliday;
 	if (sum != 0)
 		this.setTime( this.getTime()+sum );
 };

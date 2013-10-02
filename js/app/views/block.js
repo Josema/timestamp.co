@@ -12,38 +12,64 @@ define([
 
 	var Block = Base.extend({
 
-		containersId: ["start", "end"],
+		type: ['start', 'end'],
+		eventstype: [Consts.ON_UPDATE_START, Consts.ON_UPDATE_END],
 		setting: {
-			timestamp: 'setTimestamp'
+			timestamp: ['setTimestamp', ['timestamp', 'mili']],
+			year: ['setFullYear', ['year', 'mili']],
+			month: ['setMonth', ['mili']],
+			day: ['setDate', ['mili']],
+			hour: ['setHours', ['mili']],
+			min: ['setMinutes', ['mili']],
+			sec: ['setSeconds', ['mili']],
+			weekday: ['setDay', ['mili']],
+			weekyear: ['setWeekYear', ['mili']],
+			dayyear: ['setDayYear', ['mili']],
+			mili: ['setMilliseconds', ['timestamp', 'year', 'month', 'day', 'hour', 'min', 'sec', 'weekday', 'weekyear', 'dayyear', 'mili']],
 		},
 
+
 		initialize: function (model, id)
-		{
+		{	
 			this.model = model;
 			this.id = id;
+			this.model.on(this.eventstype[id], _.bind(this.update, this));
+			this.model.on('change:gmt', _.bind(this.update, this));
 
-			var container = '#' + this.containersId[id];
+			var container = '#' + this.type[id];
 			this.el = $( container );
 
 			var template = _.template(htmltimestamp);
-			this.el.html(template({
-				id: this.id
-			}));
+			this.el.html(template(this));
 
-			//Load events
-			this.on(Consts.ON_CHANGE_INPUT + id, this.onUpdateInput);
-			$(container + ' input').bind(this.inputevents);
+			this.addListeners(container);
 		},
 
-		render: function ()
-		{
 
-		},
-		
 		onUpdateInput: function (e)
 		{
 			var type = (e.id).substr(0, e.id.length-1);
-			this.model.get(this.containersId[this.id])[this.setting[type]](e.value);
+			(type == 'format') ?
+				this.updateFormat()
+			:
+				this.model.setDate(this.type[this.id], this.setting[type][0], e.value, this.eventstype[this.id], this.setting[type][1]);
+		},
+
+
+		update: function (exclude)
+		{
+			var pro = this.model.get(this.type[this.id]).pro, i;
+			for (i in pro)
+				if ($.inArray( i, exclude ) < 0)
+					$('#' + i + this.id).val(pro[i]);
+					
+			this.updateFormat();
+		},
+		
+		updateFormat: function ()
+		{
+			var temp = new Date(this.model.get(this.type[this.id]).getTime()+this.model.get('offset'));
+			$('#formatlabel' + this.id).html(temp.format($('#format' + this.id).val()));
 		}
 	});
 	

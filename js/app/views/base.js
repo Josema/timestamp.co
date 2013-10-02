@@ -12,12 +12,15 @@ define([
 	var Base = Backbone.View.extend({
 		
 		el: $('body'),
-
-		inputevents: {
-			keydown: this.updateInputDown,
-			keypress: this.updateInputPress,
-			keyup: this.updateInputUp,
-			drop: this.updateInputDrop
+		
+		addListeners: function (element)
+		{
+			$(element + " input").bind({
+				keydown: _.bind(this.updateInputDown, this),
+				keypress: _.bind(this.updateInputPress, this),
+				keyup: _.bind(this.updateInputUp, this),
+				drop: _.bind(this.updateInputDrop, this)
+			});
 		},
 
 		updateInputDown: function(e)
@@ -25,13 +28,13 @@ define([
 			this.inputDown = e.target.value;
 			if (!isNaN(e.target.value))
 			{
-				console.log(e)
 				var key = window.event ? e.keyCode : e.which;
 				if (key == 38)
 					e.target.value = (Number(e.target.value)+1);
 				else if (key == 40)
 					e.target.value = (Number(e.target.value)-1);
 			}
+
 		},
 
 		updateInputPress : function(e)
@@ -39,7 +42,7 @@ define([
 			var retur = true;
 			if (e.target.alt != 'text')
 			{
-				if ((/^\s*\d*\s*$/.test(e.target.value)))
+				if ((/^\s*-?\d*\s*$/.test(e.target.value)))
 				{
 					this.trimedInput = $.trim(e.target.value);
 					if (this.trimedInput != e.target.value)
@@ -62,7 +65,7 @@ define([
 		updateInputUp : function(e)
 		{
 			if (this.inputDown != e.target.value && this.updateInputPress(e))
-				this.trigger(Consts.ON_CHANGE_INPUT + e.target.id.substr(-1), e.target);
+				this.onUpdateInput( e.target );
 		},
 		
 		

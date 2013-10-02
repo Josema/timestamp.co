@@ -39,13 +39,15 @@ define([
 		{
 			this.get('current').setTime(new Date());
 			this.updateDate(this.get('current'));
-			this.trigger(Consts.ON_CHANGE_CURRENT);
+			this.trigger(Consts.ON_UPDATE_CURRENT);
 		},
 
 
 		updateOffset: function ()
 		{
 			this.set('offset', (this.get('gmt')-this.get('gmtreal'))*Consts.MINS_HOUR);
+			this.updateDate(this.get('start'));
+			this.updateDate(this.get('end'));
 		},
 
 
@@ -54,7 +56,7 @@ define([
 			var servertime = new Date(model.get('timeserver').year, model.get('timeserver').month-1, model.get('timeserver').day, model.get('timeserver').hour).getTime();
 			if (!isNaN(servertime))
 			{
-				var t = model.get('current');
+				var t = model.get('current').pro;
 				var currenttime = new Date(t.year, t.month, t.day, t.hour).getTime();
 				var calc = ((currenttime-servertime)/Consts.MINS_HOUR);
 				model.set({gmtreal: calc, gmt: calc});
@@ -65,18 +67,28 @@ define([
 		updateDate: function (date)
 		{
 			var temp = new Date(date.getTime()+this.get('offset'));
-			date.militimestamp = temp.getTime()-this.get('offset');
-			date.timestamp = Math.round((temp.getTime()-this.get('offset'))/1000);
-			date.year = temp.getFullYear();
-			date.month = temp.getMonth();
-			date.weekday = temp.getDay(),
-			date.day = temp.getDate();
-			date.hour = temp.getHours();
-			date.min = temp.getMinutes();
-			date.sec = temp.getSeconds();
-			date.mili = temp.getMilliseconds();
-			date.dayyear = temp.getDayYear();
+			date.pro = {};
+			date.pro.timestamp = Math.round((temp.getTime()-this.get('offset'))/1000);
+			date.pro.year = temp.getFullYear();
+			date.pro.month = temp.getMonth();
+			date.pro.day = temp.getDate();
+			date.pro.hour = temp.getHours();
+			date.pro.min = temp.getMinutes();
+			date.pro.sec = temp.getSeconds();
+			date.pro.mili = temp.getMilliseconds();
+			date.pro.weekday = temp.getDay();
+			date.pro.weekyear = temp.getWeekYear();
+			date.pro.dayyear = temp.getDayYear();
+		},
+
+
+		setDate: function(datetype, param, value, eventtype, exclude)
+		{
+			this.get(datetype)[param](value);
+			this.updateDate(this.get(datetype));
+			this.trigger(eventtype, exclude);
 		}
+
 	});
 	
 	return Timestamp;
