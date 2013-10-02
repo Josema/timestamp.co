@@ -21,13 +21,18 @@ define([
 		{
 			this.model = model;
 			this.id = id;
-			this.el = $( '#' + this.containersId[this.id] );
-			this.on(Consts.ON_CHANGE_INPUT + id, this.onUpdateInput);
+
+			var container = '#' + this.containersId[id];
+			this.el = $( container );
 
 			var template = _.template(htmltimestamp);
 			this.el.html(template({
 				id: this.id
 			}));
+
+			//Load events
+			this.on(Consts.ON_CHANGE_INPUT + id, this.onUpdateInput);
+			$(container + ' input').bind(this.inputevents);
 		},
 
 		render: function ()

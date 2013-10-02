@@ -12,12 +12,12 @@ define([
 	var Base = Backbone.View.extend({
 		
 		el: $('body'),
-		
-	   	events: {
-			'keydown input': 'updateInputDown',
-			'keypress input': 'updateInputPress',
-			'keyup input': 'updateInputUp',
-			'drop input': 'updateInputDrop'
+
+		inputevents: {
+			keydown: this.updateInputDown,
+			keypress: this.updateInputPress,
+			keyup: this.updateInputUp,
+			drop: this.updateInputDrop
 		},
 
 		updateInputDown: function(e)
@@ -25,11 +25,12 @@ define([
 			this.inputDown = e.target.value;
 			if (!isNaN(e.target.value))
 			{
+				console.log(e)
 				var key = window.event ? e.keyCode : e.which;
-		        if (key == 38)
-		            e.target.value = (Number(e.target.value)+1);
-		        else if (key == 40)
-		            e.target.value = (Number(e.target.value)-1);
+				if (key == 38)
+					e.target.value = (Number(e.target.value)+1);
+				else if (key == 40)
+					e.target.value = (Number(e.target.value)-1);
 			}
 		},
 

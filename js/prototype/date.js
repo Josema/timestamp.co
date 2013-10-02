@@ -1,17 +1,18 @@
 Date.prototype.miliday = 864e5;
 
 
-
-Date.prototype.setTimestamp = function(d)
+// Set the timestamp without millisecons
+Date.prototype.setTimestamp = function(t)
 {
-	this.setTime( Number(String(d) + this.getMilliseconds()) );
+  this.setTime( Number(String(t) + this.getMilliseconds()) );
+  console.log(this)
 };
 
 
 // Set the day of the week 1: Monday, 7: Sunday
 Date.prototype.setDay = function(d)
 {
-	var sum = (d-this.getDay())*this.miliday;
+  var sum = (d-this.getDay())*this.miliday;
 	if (sum != 0)
 		this.setTime( this.getTime()+sum );
 };
@@ -35,11 +36,11 @@ Date.prototype.setDayYear = function(d)
 //http://stackoverflow.com/questions/6117814/get-week-of-year-in-javascript-like-in-php
 Date.prototype.getWeekYear = function ()
 {
-    var d = new Date(this);
-    d.setHours(0,0,0);
-    d.setDate(d.getDate() + 4 - (d.getDay()||7));
-    var yearStart = new Date(d.getFullYear(), 0, 1);
-    return Math.ceil(( ( (d - yearStart) / this.miliday) + 1)/7);
+  var d = new Date(this);
+  d.setHours(0,0,0);
+  d.setDate(d.getDate() + 4 - (d.getDay()||7));
+  var yearStart = new Date(d.getFullYear(), 0, 1);
+  return Math.ceil(( ( (d - yearStart) / this.miliday) + 1)/7);
 };
 
 
@@ -52,6 +53,7 @@ Date.prototype.setWeekYear = function (w)
 };
 
 
+// http://phpjs.org/functions/date/
 Date.prototype.format = function(format)
 {
     var that = this,
