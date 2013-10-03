@@ -68,7 +68,7 @@ define([
 		{
 			var temp = new Date(date.getTime()+this.get('offset'));
 			date.pro = {};
-			date.pro.timestamp = Math.round((temp.getTime()-this.get('offset'))/1000);
+			date.pro.timestamp = Math.floor((temp.getTime()-this.get('offset'))/1000);
 			date.pro.year = temp.getFullYear();
 			date.pro.month = temp.getMonth();
 			date.pro.day = temp.getDate();
@@ -85,6 +85,7 @@ define([
 		setDate: function(datetype, param, value, eventtype, exclude)
 		{
 			this.get(datetype)[param](value);
+
 			this.updateDate(this.get(datetype));
 			this.trigger(eventtype, exclude);
 		}

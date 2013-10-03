@@ -15,17 +15,17 @@ define([
 		type: ['start', 'end'],
 		eventstype: [Consts.ON_UPDATE_START, Consts.ON_UPDATE_END],
 		setting: {
-			timestamp: ['setTimestamp', ['timestamp', 'mili']],
-			year: ['setFullYear', ['year', 'mili']],
-			month: ['setMonth', ['mili']],
-			day: ['setDate', ['mili']],
-			hour: ['setHours', ['mili']],
-			min: ['setMinutes', ['mili']],
-			sec: ['setSeconds', ['mili']],
-			weekday: ['setDay', ['mili']],
-			weekyear: ['setWeekYear', ['mili']],
-			dayyear: ['setDayYear', ['mili']],
-			mili: ['setMilliseconds', ['timestamp', 'year', 'month', 'day', 'hour', 'min', 'sec', 'weekday', 'weekyear', 'dayyear', 'mili']],
+			timestamp: ['setTimestamp', ['timestamp', 'mili'], 0],
+			year: ['setFullYear', ['year', 'mili'], 0],
+			month: ['setMonth', ['mili'], 1],
+			day: ['setDate', ['mili'], 0],
+			hour: ['setHours', ['mili'], 0],
+			min: ['setMinutes', ['mili'], 0],
+			sec: ['setSeconds', ['mili'], 0],
+			weekday: ['setDay', ['mili'], 1],
+			weekyear: ['setWeekYear', ['mili'], 0],
+			dayyear: ['setDayYear', ['mili'], 0],
+			mili: ['setMilliseconds', [], 0],
 		},
 
 
@@ -52,7 +52,7 @@ define([
 			(type == 'format') ?
 				this.updateFormat()
 			:
-				this.model.setDate(this.type[this.id], this.setting[type][0], e.value, this.eventstype[this.id], this.setting[type][1]);
+				this.model.setDate(this.type[this.id], this.setting[type][0], e.value-this.setting[type][2], this.eventstype[this.id], this.setting[type][1]);
 		},
 
 
@@ -61,7 +61,7 @@ define([
 			var pro = this.model.get(this.type[this.id]).pro, i;
 			for (i in pro)
 				if ($.inArray( i, exclude ) < 0)
-					$('#' + i + this.id).val(pro[i]);
+					$('#' + i + this.id).val(pro[i]+this.setting[i][2]);
 					
 			this.updateFormat();
 		},

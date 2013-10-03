@@ -59,7 +59,7 @@ Date.prototype.format = function(format)
     var that = this,
       jsdate,
       f,
-      timestamp = Math.round(this.getTime()/1000)
+      timestamp = Math.floor(this.getTime()/1000)
       // Keep this here (works, but for code commented-out
       // below for file size reasons)
       //, tal= [],
@@ -89,8 +89,13 @@ Date.prototype.format = function(format)
     j: function () { // Day of month; 1..31
       return jsdate.getDate();
     },
-    l: function () { // Full day name; Monday...Sunday
+    l: function () { // Full day name; Sunday...Saturday
       return txt_words[f.w()] + 'day';
+    },
+    E: function () { // Full day name; Monday...Sunday
+      var d = f.w()+1;
+      if (d == 7) d = 0;
+      return txt_words[d] + 'day';
     },
     N: function () { // ISO-8601 day of week; 1[Mon]..7[Sun]
       return f.w() || 7;
