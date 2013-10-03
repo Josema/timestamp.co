@@ -24,7 +24,7 @@ define([
 		initialize: function (model) 
 		{
 			this.model = model;
-			this.model.on(Consts.ON_UPDATE_CURRENT, _.bind(this.update, this));
+			this.model.on(Consts.CURRENT, _.bind(this.update, this));
 			this.model.on('change:gmtreal', _.bind(this.onTimeserverSuccess, this));
 
 			this.timestamp = $('#htimestamp');
@@ -44,7 +44,7 @@ define([
 		{
 			if (this.canupdate)
 			{
-				var current = this.model.get("current").pro;
+				var current = this.model.get(Consts.CURRENT).pro;
 				this.timestamp.html(current.timestamp);
 				this.year.html(current.year);
 				this.month.html(current.month);

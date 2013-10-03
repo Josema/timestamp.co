@@ -1,27 +1,37 @@
-Date.prototype.miliday = 864e5;
+Date.mondayfirstday = true;
+Date.miliday = 864e5;
 
 
 
 // Set the timestamp without millisecons
 Date.prototype.setTimestamp = function(t)
 {
-  this.setTime( Number(String(t) + this.getMilliseconds()) );
+	this.setTime( Number(String(t) + this.getMilliseconds()) );
+};
+
+
+// Get the day of the week 1: Monday, 7: Sunday
+Date.prototype.getWeekDay = function()
+{
+	var d = this.getDay();
+	return (Date.mondayfirstday) ? ((d == 0) ? 7 : d) :	d+1;
 };
 
 
 // Set the day of the week 1: Monday, 7: Sunday
-Date.prototype.setDay = function(d)
+Date.prototype.setWeekDay = function(d)
 {
-	var sum = (d-this.getDay())*this.miliday;
+	var sum = (d-this.getWeekDay())*Date.miliday;
 	if (sum != 0)
 		this.setTime( this.getTime()+sum );
 };
 
 
+
 // Get the day of the year. 1-366
 Date.prototype.getDayYear = function()
 {
-	return Math.floor((this - new Date(this.getFullYear(), 0, 0)) / this.miliday);
+	return Math.floor((this - new Date(this.getFullYear(), 0, 0)) / Date.miliday);
 };
 
 
@@ -36,11 +46,11 @@ Date.prototype.setDayYear = function(d)
 //http://stackoverflow.com/questions/6117814/get-week-of-year-in-javascript-like-in-php
 Date.prototype.getWeekYear = function ()
 {
-  var d = new Date(this);
-  d.setHours(0,0,0);
-  d.setDate(d.getDate() + 4 - (d.getDay()||7));
-  var yearStart = new Date(d.getFullYear(), 0, 1);
-  return Math.ceil(( ( (d - yearStart) / this.miliday) + 1)/7);
+	var d = new Date(this);
+	d.setHours(0,0,0);
+	d.setDate(d.getDate() + 4 - (d.getDay()||7));
+	var yearStart = new Date(d.getFullYear(), 0, 1);
+	return Math.ceil(( ( (d - yearStart) / Date.miliday) + 1)/7);
 };
 
 
@@ -52,14 +62,26 @@ Date.prototype.setWeekYear = function (w)
 	this.setDay(weekday);
 };
 
+Date.prototype.getMonthClone = Date.prototype.getMonth;
+Date.prototype.getMonth = function ()
+{
+	return this.getMonthClone()+1;
+}
+
+Date.prototype.setMonthClone = Date.prototype.setMonth;
+Date.prototype.setMonth = function (m)
+{
+	this.setMonthClone(m-1);
+}
 
 // http://phpjs.org/functions/date/
-Date.prototype.format = function(format)
+Date.prototype.format = function(format, firstday)
 {
     var that = this,
       jsdate,
       f,
-      timestamp = Math.floor(this.getTime()/1000)
+      timestamp = Math.floor(this.getTime()/1000),
+      firstday = (typeof firstday !== 'undefined') ? firstday : 0,
       // Keep this here (works, but for code commented-out
       // below for file size reasons)
       //, tal= [],
@@ -89,11 +111,8 @@ Date.prototype.format = function(format)
     j: function () { // Day of month; 1..31
       return jsdate.getDate();
     },
-    l: function () { // Full day name; Sunday...Saturday
-      return txt_words[f.w()] + 'day';
-    },
-    E: function () { // Full day name; Monday...Sunday
-      var d = f.w()+1;
+    l: function () { // Full day name; Monday...Sunday
+      var d = f.w();
       if (d == 7) d = 0;
       return txt_words[d] + 'day';
     },

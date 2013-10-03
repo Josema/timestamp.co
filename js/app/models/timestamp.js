@@ -16,22 +16,37 @@ define([
 			gmtreal: null,
 			gmt: null,
 			offset: 0,
+			mondayfirstday: true,
 			current: new Date(),
 			start: new Date(),
 			end: new Date()
+		},
+		
+
+		config: {
+			time: ['Time'],
+			timestamp: ['Timestamp', ['timestamp', 'mili']],
+			year: ['FullYear', ['year', 'mili']],
+			month: ['Month', ['mili']],
+			day: ['Date', ['mili']],
+			hour: ['Hours', ['mili']],
+			min: ['Minutes', ['mili']],
+			sec: ['Seconds', ['mili']],
+			weekday: ['WeekDay', ['mili']],
+			weekyear: ['WeekYear', ['mili']],
+			dayyear: ['DayYear', ['mili']],
+			mili: ['Milliseconds'],
 		},
 
 
 		initialize: function ()
 		{
-			this.on('change:gmt', _.bind(this.updateOffset, this));
+			this.on('change:gmt', _.bind(this.onUpdateOffset, this));
+			this.fetch({success: this.onTimeserverSuccess});
 			this.interval = setInterval(
-				_.bind(this.updateCurrent, this), //this.onInterval.bind(this) Native option Doesn't work on IE8-7
+				_.bind(this.onUpdateCurrent, this), //this.onInterval.bind(this) Native option Doesn't work on IE8-7
 				Consts.TIMEINTERVAL
 			);
-			
-			this.updateCurrent();
-			this.fetch({success: this.onTimeserverSuccess});
 		},
 
 
@@ -41,54 +56,55 @@ define([
 			if (!isNaN(servertime))
 			{
 				var t = model.get('current').pro;
-				var currenttime = new Date(t.year, t.month, t.day, t.hour).getTime();
+				var currenttime = new Date(t.year, t.month-1, t.day, t.hour).getTime();
 				var calc = ((currenttime-servertime)/Consts.MINS_HOUR);
 				model.set({gmtreal: calc, gmt: calc});
 			}
     	},
 
 
-		updateCurrent: function ()
-		{
-			this.get('current').setTime(new Date());
-			this.updateDate(this.get('current'));
-			this.trigger(Consts.ON_UPDATE_CURRENT);
-		},
-
-
-		updateOffset: function ()
+		onUpdateOffset: function ()
 		{
 			this.set('offset', (this.get('gmt')-this.get('gmtreal'))*Consts.MINS_HOUR);
-			this.updateDate(this.get('start'));
-			this.updateDate(this.get('end'));
-		},
-    	
-
-		updateDate: function (date)
-		{
-			var temp = new Date(date.getTime()+this.get('offset'));
-			date.pro = {};
-			date.pro.timestamp = Math.floor((temp.getTime()-this.get('offset'))/1000);
-			date.pro.year = temp.getFullYear();
-			date.pro.month = temp.getMonth();
-			date.pro.day = temp.getDate();
-			date.pro.hour = temp.getHours();
-			date.pro.min = temp.getMinutes();
-			date.pro.sec = temp.getSeconds();
-			date.pro.mili = temp.getMilliseconds();
-			date.pro.weekday = temp.getDay();
-			date.pro.weekyear = temp.getWeekYear();
-			date.pro.dayyear = temp.getDayYear();
+			this.updateProperties(Consts.START);
+			this.updateProperties(Consts.END);
+			this.trigger(Consts.START);
+			this.trigger(Consts.END);
 		},
 
 
-		setDate: function(datetype, param, value, eventtype, exclude)
+		onUpdateCurrent: function ()
 		{
-			this.get(datetype)[param](value);
+			this.setPropertie(Consts.CURRENT, 'time', new Date());
+		},
 
-			this.updateDate(this.get(datetype));
-			this.trigger(eventtype, exclude);
+
+		setPropertie: function(datetype, param, value)
+		{
+			this.get(datetype)['set' + this.config[param][0]](value);
+			this.updateProperties(datetype);
+			this.trigger(datetype, this.config[param][1]);
+		},
+
+		updateProperties: function (type)
+		{
+			
+			var temp = new Date(this.get(type).getTime()+this.get('offset'));
+			var pro = {};
+			pro.timestamp = Math.floor((temp.getTime()-this.get('offset'))/1000);
+			pro.year = temp.getFullYear();
+			pro.month = temp.getMonth();
+			pro.day = temp.getDate();
+			pro.hour = temp.getHours();
+			pro.min = temp.getMinutes();
+			pro.sec = temp.getSeconds();
+			pro.mili = temp.getMilliseconds();
+			pro.weekday = temp.getWeekDay();
+			pro.weekyear = temp.getWeekYear();
+			pro.dayyear = temp.getDayYear();
+			this.get(type).pro = pro;
 		}
+
 
 	});
 	
