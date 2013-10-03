@@ -35,6 +35,19 @@ define([
 		},
 
 
+		onTimeserverSuccess: function (model)
+		{
+			var servertime = new Date(model.get('timeserver').year, model.get('timeserver').month-1, model.get('timeserver').day, model.get('timeserver').hour).getTime();
+			if (!isNaN(servertime))
+			{
+				var t = model.get('current').pro;
+				var currenttime = new Date(t.year, t.month, t.day, t.hour).getTime();
+				var calc = ((currenttime-servertime)/Consts.MINS_HOUR);
+				model.set({gmtreal: calc, gmt: calc});
+			}
+    	},
+
+
 		updateCurrent: function ()
 		{
 			this.get('current').setTime(new Date());
@@ -49,19 +62,6 @@ define([
 			this.updateDate(this.get('start'));
 			this.updateDate(this.get('end'));
 		},
-
-
-		onTimeserverSuccess: function (model)
-		{
-			var servertime = new Date(model.get('timeserver').year, model.get('timeserver').month-1, model.get('timeserver').day, model.get('timeserver').hour).getTime();
-			if (!isNaN(servertime))
-			{
-				var t = model.get('current').pro;
-				var currenttime = new Date(t.year, t.month, t.day, t.hour).getTime();
-				var calc = ((currenttime-servertime)/Consts.MINS_HOUR);
-				model.set({gmtreal: calc, gmt: calc});
-			}
-    	},
     	
 
 		updateDate: function (date)
