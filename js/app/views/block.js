@@ -33,6 +33,7 @@ define([
 		onUpdateInput: function (e)
 		{
 			var type = (e.id).substr(0, e.id.length-1);
+			if ((e.value).length > 12) type = 'time';
 			(type == 'format') ?
 				this.updateFormat()
 			:

@@ -88,7 +88,6 @@ define([
 
 		updateProperties: function (type)
 		{
-			
 			var temp = new Date(this.get(type).getTime()+this.get('offset'));
 			var pro = {};
 			pro.timestamp = Math.floor((temp.getTime()-this.get('offset'))/1000);
