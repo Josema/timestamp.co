@@ -1,0 +1,508 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"up",
+				"updateFormat"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "js/app/models/timestamp.js",
+			"settings":
+			{
+				"buffer_size": 2847,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/C/Users/EnZo/AppData/Roaming/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+			"settings":
+			{
+				"buffer_size": 161,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "js/app/consts.js",
+			"settings":
+			{
+				"buffer_size": 293,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "js/app/views/block.js",
+			"settings":
+			{
+				"buffer_size": 1379,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "js/app/templates/timestamp.html",
+			"settings":
+			{
+				"buffer_size": 2424,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "timeserver.php",
+			"settings":
+			{
+				"buffer_size": 117,
+				"line_ending": "Windows"
+			}
+		}
+	],
+	"build_system": "Packages/User/PHP.sublime-build",
+	"command_palette":
+	{
+		"height": 210.0,
+		"selected_items":
+		[
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"remove",
+				"Package Control: Remove Package"
+			],
+			[
+				"sidebar",
+				"View: Toggle Side Bar"
+			],
+			[
+				"sideb",
+				"View: Toggle Side Bar"
+			],
+			[
+				"jsh",
+				"JSHint"
+			],
+			[
+				"inst",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: ",
+				"Package Control: Remove Package"
+			],
+			[
+				"lint",
+				"Preferences: SublimeLinter Settings – User"
+			],
+			[
+				"ins",
+				"Package Control: Install Package"
+			],
+			[
+				"git diff",
+				"Git: Open Modified Files"
+			],
+			[
+				"git dif",
+				"Git: Diff All"
+			],
+			[
+				"packa",
+				"Package Control: Remove Package"
+			],
+			[
+				"pack",
+				"Package Control: Remove Package"
+			],
+			[
+				"save",
+				"Project: Save As"
+			],
+			[
+				"git bla",
+				"Git: Blame"
+			],
+			[
+				"git blame",
+				"Set Syntax: Git Blame"
+			],
+			[
+				"git status",
+				"Git: Status"
+			],
+			[
+				"git",
+				"Git: Diff All"
+			],
+			[
+				"",
+				"About"
+			]
+		],
+		"width": 402.0
+	},
+	"console":
+	{
+		"height": 125.0,
+		"history":
+		[
+			"import urllib.request,os; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); open(os.path.join(ipp, pf), 'wb').write(urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ','%20')).read())"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/C/Users/EnZo/AppData/Roaming/Sublime Text 3/Packages/SideBarEnhancements/CHANGELOG",
+		"/C/Users/EnZo/AppData/Roaming/Sublime Text 3/Packages/JSHint Gutter/JSHint.sublime-settings",
+		"/C/Users/EnZo/AppData/Roaming/Sublime Text 3/Packages/JSHint Gutter/Default (Windows).sublime-keymap",
+		"/C/Users/EnZo/AppData/Roaming/Sublime Text 3/Packages/JSHint Gutter/.jshintrc",
+		"/D/1#webs/timestamp.co/timeserver.php",
+		"/C/Users/EnZo/AppData/Roaming/Sublime Text 3/Packages/User/SublimeLinter.sublime-settings",
+		"/C/Users/EnZo/AppData/Roaming/Sublime Text 3/Local/Auto Save Session.sublime_session",
+		"/C/Users/EnZo/AppData/Roaming/Sublime Text 3/Installed Packages/Git.sublime-package",
+		"/C/Users/EnZo/AppData/Roaming/Sublime Text 3/Installed Packages/Package Control.sublime-package",
+		"/C/Users/EnZo/AppData/Roaming/Sublime Text 3/Packages/User/Git.sublime-settings",
+		"/D/1#webs/timestamp.co/js/prototype/date.js",
+		"/D/1#webs/timestamp.co/js/app/views/block.js",
+		"/D/1#webs/timestamp.co/1_resources/backbone-examples/backbone_require/bower_components/backbone/backbone.js",
+		"/D/1#webs/timestamp.co/1_resources/backbone-examples/backbone_require/bower_components/underscore/underscore.js",
+		"/D/1#webs/timestamp.co/1_resources/backbone-examples/backbone_require/bower_components/requirejs/require.js",
+		"/D/1#webs/timestamp.co/1_resources/backbone-examples/backbone_require/bower_components/jquery/jquery.js",
+		"/C/Users/EnZo/AppData/Roaming/Sublime Text 3/Packages/HTML-CSS-JS Prettify/HTMLPrettify.sublime-settings",
+		"/C/Users/EnZo/AppData/Roaming/Sublime Text 3/Packages/User/php.sublime-build",
+		"/C/Users/EnZo/Desktop/test",
+		"/D/1#webs/timestamp.co/js/app/views/base.js",
+		"/D/1#webs/timestamp.co/timestamp.sublime-project",
+		"/D/1#webs/timestamp.co/1_resources/backbone-examples/RequireJS-Backbone-Starter-master/js/views/view.js",
+		"/D/1#webs/timestamp.co/timestamp.sublime-workspace",
+		"/D/1#webs/timestamp.co/index.html",
+		"/D/1#webs/timestamp.co/README.md",
+		"/D/1#webs/timestamp.co/js/app/views/header.js",
+		"/C/Users/EnZo/AppData/Roaming/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
+		"/D/1#webs/timestamp.co/js/app/consts.js",
+		"/D/1#webs/timestamp.co/js/app/main.js",
+		"/D/1#webs/timestamp.co/1_resources/backbone-examples/backbone_require/js/main.js"
+	],
+	"find":
+	{
+		"height": 34.0
+	},
+	"find_in_files":
+	{
+		"height": 90.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": true,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 1,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "js/app/models/timestamp.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2847,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1931,
+								1931
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1045.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "/C/Users/EnZo/AppData/Roaming/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 161,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								105,
+								105
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JSON.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "js/app/consts.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 293,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								111,
+								116
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "js/app/views/block.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1379,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								842,
+								842
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 180.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "js/app/templates/timestamp.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2424,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								622,
+								622
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 165.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "timeserver.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 117,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								117,
+								117
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 34.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 111.0
+	},
+	"output.git":
+	{
+		"height": 100.0
+	},
+	"project": "timestamp.sublime-project",
+	"replace":
+	{
+		"height": 62.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"bloc",
+				"js\\app\\views\\block.js"
+			],
+			[
+				"blo",
+				"js\\app\\views\\block.js"
+			],
+			[
+				"template",
+				"js\\app\\templates\\timestamp.html"
+			],
+			[
+				"header",
+				"js/app/views/header.js"
+			],
+			[
+				"",
+				"1_resources/backbone-examples/backbone_require/js/main.js"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"selected_items":
+		[
+			[
+				"",
+				"D:\\1#webs\\spserver\\spserver.sublime-project"
+			]
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 210.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

@@ -15,7 +15,7 @@ define([
 		type: [Consts.START, Consts.END],
 
 		initialize: function (model, id)
-		{	
+		{
 			this.model = model;
 			this.id = id;
 			this.model.on(this.type[id], _.bind(this.update, this));
@@ -33,7 +33,7 @@ define([
 		onUpdateInput: function (e)
 		{
 			var type = (e.id).substr(0, e.id.length-1);
-			if ((e.value).length > 12) type = 'time';
+			if ((e.value).length > 11) type = 'time';
 			(type == 'format') ?
 				this.updateFormat()
 			:

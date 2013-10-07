@@ -6,7 +6,7 @@ Date.miliday = 864e5;
 // Set the timestamp without millisecons
 Date.prototype.setTimestamp = function(t)
 {
-	this.setTime( Number(String(t) + this.getMilliseconds()) );
+  this.setTime( Number(String(t) + (this.getMilliseconds()).pad(3)) );
 };
 
 
@@ -22,7 +22,7 @@ Date.prototype.getWeekDay = function()
 Date.prototype.setWeekDay = function(d)
 {
 	var sum = (d-this.getWeekDay())*Date.miliday;
-	if (sum != 0)
+	if (sum !== 0)
 		this.setTime( this.getTime()+sum );
 };
 

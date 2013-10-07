@@ -64,7 +64,8 @@ define([
 		
 		updateInputUp : function(e)
 		{
-			if (this.inputDown != e.target.value && this.updateInputPress(e))
+			var key = window.event ? e.keyCode : e.which;
+			if (this.inputDown != e.target.value && this.updateInputPress(e) && key !== 86)
 				this.onUpdateInput( e.target );
 		},
 		

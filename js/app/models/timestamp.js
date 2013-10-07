@@ -35,18 +35,20 @@ define([
 			weekday: ['WeekDay', ['mili']],
 			weekyear: ['WeekYear', ['mili']],
 			dayyear: ['DayYear', ['mili']],
-			mili: ['Milliseconds'],
+			mili: ['Milliseconds']
 		},
 
 
 		initialize: function ()
 		{
+			this.updateProperties('current');
 			this.on('change:gmt', _.bind(this.onUpdateOffset, this));
 			this.fetch({success: this.onTimeserverSuccess});
 			this.interval = setInterval(
 				_.bind(this.onUpdateCurrent, this), //this.onInterval.bind(this) Native option Doesn't work on IE8-7
 				Consts.TIMEINTERVAL
 			);
+
 		},
 
 
@@ -60,7 +62,7 @@ define([
 				var calc = ((currenttime-servertime)/Consts.MINS_HOUR);
 				model.set({gmtreal: calc, gmt: calc});
 			}
-    	},
+		},
 
 
 		onUpdateOffset: function ()
@@ -81,7 +83,7 @@ define([
 
 		setPropertie: function(datetype, param, value)
 		{
-			this.get(datetype)['set' + this.config[param][0]](value);
+			this.get(datetype)['set' + this.config[param][0]](Number(value));
 			this.updateProperties(datetype);
 			this.trigger(datetype, this.config[param][1]);
 		},
