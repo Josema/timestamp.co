@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"update",
+				"updateProperties"
+			],
+			[
 				"up",
 				"updateFormat"
 			]
@@ -12,26 +16,21 @@
 	"buffers":
 	[
 		{
-			"file": "js/app/models/timestamp.js",
+			"contents": "/* global require */\n'use strict';\n\ndefine([\n	'backbone',\n	'underscore',\n	'jquery',\n	'app/consts',\n	'prototype/string'\n], function (Backbone, _, $, Consts) {\n	\n	var Header =´ Backbone.View.extend({\n\n		el: $('#header'),\n		\n		canupdate: true,\n\n		events: {\n			'mouseover #updated': 'onMouseheader',\n			'mouseout #updated': 'onMouseheader',\n			'change #gmts': 'onChangeGMT'\n		},\n\n		initialize: function (model) \n		{\n			this.model = model;\n			this.model.on(Consts.CURRENT, _.bind(this.update, this));\n			this.model.on('change:gmtreal', _.bind(this.onTimeserverSuccess, this));\n\n			this.timestamp = $('#htimestamp');\n			this.year = $('#hyear');\n			this.month = $('#hmonth');\n			this.day = $('#hday');\n			this.hour = $('#hhour');\n			this.min = $('#hmin');\n			this.sec = $('#hsec');\n			this.mili = $('#hmili');\n			this.gmt = $('#gmts');\n			\n			this.gmt.val(0);\n		},\n		\n		update: function ()\n		{\n			if (this.canupdate)\n			{\n				var current = this.model.get(Consts.CURRENT).pro;\n				this.timestamp.html(current.timestamp);\n				this.year.html(current.year);\n				this.month.html(current.month);\n				this.day.html(current.day);\n				this.hour.html(current.hour.pad(2));\n				this.min.html(current.min.pad(2));\n				this.sec.html(current.sec);\n				this.mili.html(current.mili);\n			}\n		},\n		\n		onMouseheader: function (e)\n		{\n			this.canupdate = (e.type == 'mouseout');\n			(this.canupdate) ? $('#header').removeClass('over') : $('#header').addClass('over');\n		},\n		\n		onChangeGMT: function (e)\n		{\n			this.model.set(\"gmt\", Number(e.target.value));\n		},\n		\n		onTimeserverSuccess: function (e)\n		{\n			this.gmt.val(this.model.get(\"gmt\"));\n			$('#gmt' + this.model.get(\"gmt\")).addClass('gmtreal');\n		}\n	});\n	\n	return Header;\n});",
+			"file": "js/app/views/header.js",
+			"file_size": 1782,
+			"file_write_time": 130256595198584970,
 			"settings":
 			{
-				"buffer_size": 2847,
+				"buffer_size": 1706,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "/C/Users/EnZo/AppData/Roaming/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+			"file": "js/app/models/timestamp.js",
 			"settings":
 			{
-				"buffer_size": 161,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "js/app/consts.js",
-			"settings":
-			{
-				"buffer_size": 293,
+				"buffer_size": 2785,
 				"line_ending": "Windows"
 			}
 		},
@@ -39,7 +38,23 @@
 			"file": "js/app/views/block.js",
 			"settings":
 			{
-				"buffer_size": 1379,
+				"buffer_size": 1346,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "js/prototype/date.js",
+			"settings":
+			{
+				"buffer_size": 9041,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "js/app/views/base.js",
+			"settings":
+			{
+				"buffer_size": 1970,
 				"line_ending": "Windows"
 			}
 		},
@@ -50,24 +65,36 @@
 				"buffer_size": 2424,
 				"line_ending": "Windows"
 			}
-		},
-		{
-			"file": "timeserver.php",
-			"settings":
-			{
-				"buffer_size": 117,
-				"line_ending": "Windows"
-			}
 		}
 	],
 	"build_system": "Packages/User/PHP.sublime-build",
 	"command_palette":
 	{
-		"height": 210.0,
+		"height": 127.0,
 		"selected_items":
 		[
 			[
+				"push",
+				"Git: Push"
+			],
+			[
+				"git comm",
+				"Git: Quick Commit"
+			],
+			[
+				"git add",
+				"Git: Add..."
+			],
+			[
+				"git status",
+				"Git: Status"
+			],
+			[
 				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"inst",
 				"Package Control: Install Package"
 			],
 			[
@@ -85,10 +112,6 @@
 			[
 				"jsh",
 				"JSHint"
-			],
-			[
-				"inst",
-				"Package Control: Install Package"
 			],
 			[
 				"Package Control: ",
@@ -131,10 +154,6 @@
 				"Set Syntax: Git Blame"
 			],
 			[
-				"git status",
-				"Git: Status"
-			],
-			[
 				"git",
 				"Git: Diff All"
 			],
@@ -143,7 +162,7 @@
 				"About"
 			]
 		],
-		"width": 402.0
+		"width": 512.0
 	},
 	"console":
 	{
@@ -164,11 +183,16 @@
 	},
 	"file_history":
 	[
+		"/C/Users/EnZo/Desktop/Zebra_Datepicker-master/Zebra_Datepicker-master/public/javascript/zebra_datepicker.js",
+		"/C/Users/EnZo/Desktop/Zebra_Datepicker-master/Zebra_Datepicker-master/public/javascript/zebra_datepicker.src.js",
+		"/D/1#webs/timestamp.co/js/app/templates/timestamp.html",
+		"/D/1#webs/timestamp.co/timeserver.php",
+		"/D/1#webs/timestamp.co/js/app/consts.js",
+		"/C/Users/EnZo/AppData/Roaming/Sublime Text 3/Packages/User/Preferences.sublime-settings",
 		"/C/Users/EnZo/AppData/Roaming/Sublime Text 3/Packages/SideBarEnhancements/CHANGELOG",
 		"/C/Users/EnZo/AppData/Roaming/Sublime Text 3/Packages/JSHint Gutter/JSHint.sublime-settings",
 		"/C/Users/EnZo/AppData/Roaming/Sublime Text 3/Packages/JSHint Gutter/Default (Windows).sublime-keymap",
 		"/C/Users/EnZo/AppData/Roaming/Sublime Text 3/Packages/JSHint Gutter/.jshintrc",
-		"/D/1#webs/timestamp.co/timeserver.php",
 		"/C/Users/EnZo/AppData/Roaming/Sublime Text 3/Packages/User/SublimeLinter.sublime-settings",
 		"/C/Users/EnZo/AppData/Roaming/Sublime Text 3/Local/Auto Save Session.sublime_session",
 		"/C/Users/EnZo/AppData/Roaming/Sublime Text 3/Installed Packages/Git.sublime-package",
@@ -191,7 +215,6 @@
 		"/D/1#webs/timestamp.co/README.md",
 		"/D/1#webs/timestamp.co/js/app/views/header.js",
 		"/C/Users/EnZo/AppData/Roaming/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
-		"/D/1#webs/timestamp.co/js/app/consts.js",
 		"/D/1#webs/timestamp.co/js/app/main.js",
 		"/D/1#webs/timestamp.co/1_resources/backbone-examples/backbone_require/js/main.js"
 	],
@@ -211,6 +234,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"console"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -219,7 +243,7 @@
 		"replace_history":
 		[
 		],
-		"reverse": true,
+		"reverse": false,
 		"show_context": true,
 		"use_buffer2": true,
 		"whole_word": false,
@@ -233,19 +257,19 @@
 			[
 				{
 					"buffer": 0,
-					"file": "js/app/models/timestamp.js",
+					"file": "js/app/views/header.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2847,
+						"buffer_size": 1706,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1931,
-								1931
+								748,
+								748
 							]
 						],
 						"settings":
@@ -254,53 +278,54 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1045.0,
+						"translation.y": 180.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "/C/Users/EnZo/AppData/Roaming/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+					"file": "js/app/models/timestamp.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 161,
+						"buffer_size": 2785,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								105,
-								105
+								1565,
+								1565
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScript/JSON.tmLanguage"
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 760.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 2,
-					"file": "js/app/consts.js",
+					"file": "js/app/views/block.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 293,
+						"buffer_size": 1346,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								111,
-								116
+								90,
+								94
 							]
 						],
 						"settings":
@@ -316,19 +341,48 @@
 				},
 				{
 					"buffer": 3,
-					"file": "js/app/views/block.js",
+					"file": "js/prototype/date.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1379,
+						"buffer_size": 9041,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								842,
-								842
+								137,
+								137
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "js/app/views/base.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1970,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1619,
+								1619
 							]
 						],
 						"settings":
@@ -337,13 +391,13 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 180.0,
+						"translation.y": 693.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
-					"buffer": 4,
+					"buffer": 5,
 					"file": "js/app/templates/timestamp.html",
 					"semi_transient": false,
 					"settings":
@@ -355,8 +409,8 @@
 						"selection":
 						[
 							[
-								622,
-								622
+								1454,
+								1454
 							]
 						],
 						"settings":
@@ -365,34 +419,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 165.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "timeserver.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 117,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								117,
-								117
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 504.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -451,6 +478,14 @@
 		"selected_items":
 		[
 			[
+				"templa",
+				"js\\app\\templates\\timestamp.html"
+			],
+			[
+				"date",
+				"js\\prototype\\date.js"
+			],
+			[
 				"bloc",
 				"js\\app\\views\\block.js"
 			],
@@ -480,7 +515,7 @@
 		[
 			[
 				"",
-				"D:\\1#webs\\spserver\\spserver.sublime-project"
+				"D:\\1#webs\\conkis\\server\\conkis.sublime-project"
 			]
 		],
 		"width": 380.0
