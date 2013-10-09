@@ -14,7 +14,7 @@ Date.prototype.setTimestamp = function(t)
 Date.prototype.getWeekDay = function()
 {
 	var d = this.getDay();
-	return (Date.mondayfirstday) ? ((d == 0) ? 7 : d) :	d+1;
+	return (Date.mondayfirstday) ? ((d === 0) ? 7 : d) :	d+1;
 };
 
 
@@ -61,18 +61,15 @@ Date.prototype.setWeekYear = function (w)
 	this.setDayYear(1 + (w - 1) * 7);
 	this.setDay(weekday);
 };
-
-Date.prototype.getMonthClone = Date.prototype.getMonth;
-Date.prototype.getMonth = function ()
+Date.prototype.getMonthReal = function ()
 {
-	return this.getMonthClone()+1;
-}
+	return this.getMonth()+1;
+};
 
-Date.prototype.setMonthClone = Date.prototype.setMonth;
-Date.prototype.setMonth = function (m)
+Date.prototype.setMonthReal = function (m)
 {
-	this.setMonthClone(m-1);
-}
+	this.setMonth(m-1);
+};
 
 // http://phpjs.org/functions/date/
 Date.prototype.format = function(format, firstday)

@@ -5,10 +5,11 @@ require.config({
 
 	'paths':
 	{
-		"underscore": "lib/underscore.min", 
-		"backbone": "lib/backbone.min",
-		"text": "lib/text.min",
-		"jquery": "lib/jquery.min"
+		'underscore': 'lib/underscore.min', 
+		'backbone': 'lib/backbone.min',
+		'text': 'lib/text.min',
+		'jquery': 'lib/jquery.min',
+		'datepicker': 'lib/zebra_datepicker.min'
 	},
 	
 	'shim': 
@@ -22,7 +23,11 @@ require.config({
 		},
 		jquery: {
 			'exports': '$'
-		}
+		},
+		datepicker: {
+	        deps: [ 'jquery' ],
+	        exports: 'jQuery.Zebra_DatePicker'
+	    },
 	}
 }); 
 

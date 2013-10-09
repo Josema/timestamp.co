@@ -27,7 +27,7 @@ define([
 			time: ['Time'],
 			timestamp: ['Timestamp', ['timestamp', 'mili']],
 			year: ['FullYear', ['year', 'mili']],
-			month: ['Month', ['mili']],
+			month: ['MonthReal', ['mili']],
 			day: ['Date', ['mili']],
 			hour: ['Hours', ['mili']],
 			min: ['Minutes', ['mili']],
@@ -90,23 +90,21 @@ define([
 
 		updateProperties: function (type)
 		{
-			var temp = new Date(this.get(type).getTime()+this.get('offset'));
+			var temp = new Date(this.get(type)['get' + this.config.time[0]]()+this.get('offset'));
 			var pro = {};
-			pro.timestamp = Math.floor((temp.getTime()-this.get('offset'))/1000);
-			pro.year = temp.getFullYear();
-			pro.month = temp.getMonth();
-			pro.day = temp.getDate();
-			pro.hour = temp.getHours();
-			pro.min = temp.getMinutes();
-			pro.sec = temp.getSeconds();
-			pro.mili = temp.getMilliseconds();
-			pro.weekday = temp.getWeekDay();
-			pro.weekyear = temp.getWeekYear();
-			pro.dayyear = temp.getDayYear();
+			pro.timestamp = Math.floor((temp['get' + this.config.time[0]]()-this.get('offset'))/1000);
+			pro.year = temp['get' + this.config.year[0]]();
+			pro.month = temp['get' + this.config.month[0]]();
+			pro.day = temp['get' + this.config.day[0]]();
+			pro.hour = temp['get' + this.config.hour[0]]();
+			pro.min = temp['get' + this.config.min[0]]();
+			pro.sec = temp['get' + this.config.sec[0]]();
+			pro.mili = temp['get' + this.config.mili[0]]();
+			pro.weekday = temp['get' + this.config.weekday[0]]();
+			pro.weekyear = temp['get' + this.config.weekyear[0]]();
+			pro.dayyear = temp['get' + this.config.dayyear[0]]();
 			this.get(type).pro = pro;
 		}
-
-
 	});
 	
 	return Timestamp;

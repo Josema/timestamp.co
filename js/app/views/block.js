@@ -7,8 +7,9 @@ define([
 	'jquery',
 	'app/consts',
 	'app/views/base',
-	'text!app/templates/timestamp.html'
-], function (Backbone, _, $, Consts, Base, htmltimestamp) {
+	'text!app/templates/timestamp.html',
+	'datepicker'
+], function (Backbone, _, $, Consts, Base, htmltimestamp, ZebraDatepicker) {
 
 	var Block = Base.extend({
 
@@ -27,13 +28,28 @@ define([
 			this.el.html(template(this));
 
 			this.addListeners(container);
+
+			this.datepicker = $('#datepicker' + id).Zebra_DatePicker({
+				show_clear_date: false,
+				//show_week_number: true,
+				format: 'Y-n-j',
+				select_other_months: true,
+				custom_icon: $('#iconpick' + id),
+				onSelect: function(a, b, c) {
+					console.log(c, this);
+					c.setFullYear(c.getFullYear()+1);
+
+
+				}
+			});
+			this.datepicker.hide();
 		},
 
 
 		onUpdateInput: function (e)
 		{
 			var type = (e.id).substr(0, e.id.length-1);
-			if ((e.value).length > 11) type = 'time';
+			if ((e.value).length > 11 && type == 'timestamp') type = 'time';
 			(type == 'format') ?
 				this.updateFormat()
 			:
@@ -47,8 +63,9 @@ define([
 			for (i in pro)
 				if ($.inArray( i, exclude ) < 0)
 					$('#' + i + this.id).val(pro[i]);
-					
+
 			this.updateFormat();
+			$('#datepicker' + this.id).val(pro.year+'-'+pro.month+'-'+pro.day);
 		},
 		
 		updateFormat: function ()
