@@ -25,7 +25,7 @@ define([
 
 		config: {
 			time: ['Time'],
-			timestamp: ['Timestamp', ['timestamp', 'mili']],
+			timestamp: ['Timestamp', ['timestamp','mili']],
 			year: ['FullYear', ['year', 'mili']],
 			month: ['MonthReal', ['mili']],
 			day: ['Date', ['mili']],
@@ -81,11 +81,15 @@ define([
 		},
 
 
-		setPropertie: function(datetype, param, value)
+		setPropertie: function(datetype, param, value, trigger)
 		{
+			trigger = (typeof trigger !== 'undefined') ? trigger : true;
 			this.get(datetype)['set' + this.config[param][0]](Number(value));
-			this.updateProperties(datetype);
-			this.trigger(datetype, this.config[param][1]);
+			if (trigger)
+			{
+				this.updateProperties(datetype);
+				this.trigger(datetype, this.config[param][1]);
+			}
 		},
 
 		updateProperties: function (type)

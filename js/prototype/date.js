@@ -59,7 +59,7 @@ Date.prototype.setWeekYear = function (w)
 {
 	var weekday = this.getDay();
 	this.setDayYear(1 + (w - 1) * 7);
-	this.setDay(weekday);
+	this.setWeekDay(weekday);
 };
 Date.prototype.getMonthReal = function ()
 {

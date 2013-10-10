@@ -30,17 +30,11 @@ define([
 			this.addListeners(container);
 
 			this.datepicker = $('#datepicker' + id).Zebra_DatePicker({
-				show_clear_date: false,
-				//show_week_number: true,
 				format: 'Y-n-j',
+				show_clear_date: false,
 				select_other_months: true,
 				custom_icon: $('#iconpick' + id),
-				onSelect: function(a, b, c) {
-					console.log(c, this);
-					c.setFullYear(c.getFullYear()+1);
-
-
-				}
+				onSelect: _.bind(this.onSelectDatepick, this)
 			});
 			this.datepicker.hide();
 		},
@@ -54,6 +48,14 @@ define([
 				this.updateFormat()
 			:
 				this.model.setPropertie(this.type[this.id], type, e.value);
+		},
+
+
+		onSelectDatepick: function (a, b, date)
+		{
+			this.model.setPropertie(this.type[this.id], 'year', date.getFullYear(), false);
+			this.model.setPropertie(this.type[this.id], 'month', date.getMonthReal(), false);
+			this.model.setPropertie(this.type[this.id], 'day', date.getDate(), true);
 		},
 
 
