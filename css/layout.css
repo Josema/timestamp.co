@@ -148,10 +148,21 @@ body:after {
 #content {
 	margin-left: auto;
 	margin-right: auto;
-	width: 1000px;
+	width: 900px;
 }
 
+#content > div {
+    float: left;
+}
 
+#vs {
+    color: #DDDDDD;
+    font-family: HelveticaBold;
+    font-size: 40px;
+    padding-top: 56px;
+    text-align: center;
+    width: 100px;
+}
 
 
 
